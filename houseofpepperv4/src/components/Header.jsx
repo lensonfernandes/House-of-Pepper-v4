@@ -29,6 +29,7 @@ const [{user}, dispatch] = useStateValue()
     })
     // console.log(response)
 
+    localStorage.setItem('user', JSON.stringify(providerData[0]))
   }
 
   return (
@@ -54,8 +55,8 @@ const [{user}, dispatch] = useStateValue()
          
           <motion.img
           whileTap={{scale:0.6}}
-            src={Avatar}
-            className="w-10 h-10 object-cover "
+            src={user ? user.photoURL : Avatar}
+            className="w-10 h-10 object-cover cursor-pointer rounded-full "
             alt="avatar"
             onClick={login}
           />
