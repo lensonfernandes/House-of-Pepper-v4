@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Logo from "../img/img/logo.png";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import Avatar from "../img/img/avatar.png";
@@ -17,6 +17,8 @@ const Header = () => {
 
   const [{ user }, dispatch] = useStateValue();
 
+  const [isMenu, setIsMenu] = useState(false);
+
   let login = async () => {
     if (!user) {
       let {
@@ -29,6 +31,9 @@ const Header = () => {
       // console.log(response)
 
       localStorage.setItem("user", JSON.stringify(providerData[0]));
+    }
+    else{
+      setIsMenu(!isMenu)
     }
   };
 
@@ -60,18 +65,21 @@ const Header = () => {
             onClick={login}
           />
         </div>
-        <div className="w-40 bg-gray-50 shadow-xl rounded-lg flex flex-col absolute px-4 py-4 top-12 right-0">
-          {user && user.email === "lenson.fernand@gmail.com" && (
-            <Link to='/createItem'>
-              <p className=" py-2 flex items-center gap-3 cursor-pointer hover:bg-slate-100 transition-all duration-100 ease-in">
-                New Item <MdAdd />
-              </p>
-            </Link>
-          )}
-          <p className=" py-2 flex items-center gap-3 cursor-pointer hover:bg-slate-100 transition-all duration-100 ease-in-out">
-            Logout <MdLogout />{" "}
-          </p>
-        </div>
+
+        {isMenu && (
+          <div className="w-40 bg-gray-50 shadow-xl rounded-lg flex flex-col absolute px-4 py-4 top-16 right-0">
+            {user && user.email === "lenson.fernand@gmail.com" && (
+              <Link to="/createItem">
+                <p className=" py-2 flex items-center gap-3 cursor-pointer hover:bg-slate-100 transition-all duration-100 ease-in">
+                  New Item <MdAdd />
+                </p>
+              </Link>
+            )}
+            <p className=" py-2 flex items-center gap-3 cursor-pointer hover:bg-slate-100 transition-all duration-100 ease-in-out">
+              Logout <MdLogout />{" "}
+            </p>
+          </div>
+        )}
       </div>
       {/* mobile */}
       <div className="flex md:hidden w-full h-full "></div>
