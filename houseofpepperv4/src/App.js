@@ -1,13 +1,27 @@
-import logo from './logo.svg';
+import logo from "./logo.svg";
 
-import './index.css';
-import './App.css';
-import { Header } from './components';
+import "./index.css";
+import "./App.css";
+import { Header } from "./components";
+import MainContainer from "./components/MainContainer";
+import CreateContainer from "./components/CreateContainer";
+import { Route, Routes } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
+
 function App() {
   return (
-    <div className="App w-screen h-auto flex flex-col">
-      <Header />
-    </div>
+    <AnimatePresence>
+      {" "}
+      <div className="App w-screen h-auto flex flex-col bg-primary">
+        <Header />
+        <main className="mt-24 p-8 w-full">
+          <Routes>
+            <Route path="/*" element={<MainContainer />} />
+            <Route path="/createItem" element={<CreateContainer />} />
+          </Routes>
+        </main>
+      </div>
+    </AnimatePresence>
   );
 }
 
