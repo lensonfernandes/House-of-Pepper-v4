@@ -100,6 +100,11 @@ const Header = () => {
           <img src={Logo} className="w-10 object-cover" alt="logo"></img>
           <p className="text-headingColor text-xl font-bold">City</p>
         </Link>
+        <div className="flex ml-auto"><AiOutlineShoppingCart size="1.5em" style={{ marginLeft: "1vw" }} />
+        <span className="bg-sky-600 w-6 h-6 rounded-full place-content-center text-white">
+          2
+        </span></div>
+        
 
         <div className="flex items-center ml-3">
           <motion.img
