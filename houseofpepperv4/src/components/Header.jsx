@@ -15,7 +15,7 @@ const Header = () => {
   const firebaseAuth = getAuth(app);
   const provider = new GoogleAuthProvider();
 
-  const [{ user }, dispatch] = useStateValue();
+  const [{ user, cartShow }, dispatch] = useStateValue();
 
   const [isMenu, setIsMenu] = useState(false);
 
@@ -45,6 +45,12 @@ const Header = () => {
     })
   }
 
+  let showCart = ()=>{
+    dispatch({
+      type: actionType.SET_CART_SHOW,
+      cartShow: !cartShow,
+    });
+  }
   return (
     <div className="fixed z-50 w-screen  p-3 px-4 md:p-6 md:px-16 ">
       {/* Desktop */}
@@ -60,7 +66,7 @@ const Header = () => {
           <li>About Us</li>
           <li>Service</li>
         </ul>
-        <AiOutlineShoppingCart size="1.5em" style={{ marginLeft: "1vw" }} />
+        <AiOutlineShoppingCart size="1.5em" style={{ marginLeft: "1vw" }}  onClick={showCart}/>
         <span className="bg-sky-600 w-6 h-6 rounded-full place-content-center text-white">
           2
         </span>
@@ -100,7 +106,7 @@ const Header = () => {
           <img src={Logo} className="w-10 object-cover" alt="logo"></img>
           <p className="text-headingColor text-xl font-bold">City</p>
         </Link>
-        <div className="flex ml-auto"><AiOutlineShoppingCart size="1.5em" style={{ marginLeft: "1vw" }} />
+        <div className="flex ml-auto"><AiOutlineShoppingCart size="1.5em" style={{ marginLeft: "1vw" }} onClick={showCart}/>
         <span className="bg-sky-600 w-6 h-6 rounded-full place-content-center text-white">
           2
         </span></div>
