@@ -2,12 +2,24 @@ import React from "react";
 import { MdOutlineKeyboardBackspace } from "react-icons/md";
 import { RiRefreshFill } from "react-icons/ri";
 import { BiMinus, BiPlus } from "react-icons/bi";
+import { useStateValue } from "../Context/StateProvider";
+import { actionType } from "../Context/reducer";
 
 const CartContainer = () => {
+
+const [{cartShow}, dispatch] = useStateValue();
+
+let closeCart = ()=>{
+    dispatch({
+        type: actionType.SET_CART_SHOW,
+        cartShow: !cartShow,
+      });
+}
+
   return (
     <div className="fixed top-0 right-0 w-full md:w-375 h-screen bg-white drop-shadow-md flex flex-col z-[101]">
       <div className="w-full flex items-center justify-between p-4">
-        <MdOutlineKeyboardBackspace />
+        <MdOutlineKeyboardBackspace  onClick={closeCart}/>
         <p className="text-lg text-semibold"> Cart</p>
         <p className="flex items-center gap-2">
           Clear <RiRefreshFill />{" "}
