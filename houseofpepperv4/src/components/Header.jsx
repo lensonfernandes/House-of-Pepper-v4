@@ -63,9 +63,9 @@ const Header = () => {
 
         <ul className="ml-auto flex gap-5">
           <li>Home</li>
-          <li>Menu</li>
-          <li>About Us</li>
-          <li>Service</li>
+          <li>Fresh Stocks</li>
+          {/* <li>About Us</li>
+          <li>Service</li> */}
         </ul>
         <AiOutlineShoppingCart
           size="1.5em"
@@ -113,8 +113,8 @@ const Header = () => {
       {/* mobile */}
       <div className="flex items-center justify-between md:hidden w-full h-full ">
         <Link to={"/"} className="flex items-center gap-2">
-          <img src={Logo} className="w-10 object-cover" alt="logo"></img>
-          <p className="text-headingColor text-xl font-bold">City</p>
+          <GiBellPepper />
+          <p className="text-headingColor text-xl font-bold">House Of Pepper</p>
         </Link>
         <div className="flex ml-auto">
           <AiOutlineShoppingCart
@@ -154,9 +154,9 @@ const Header = () => {
             )}
             <ul className=" flex flex-col gap-3 py-2 ">
               <li>Home</li>
-              <li>Menu</li>
-              <li>About Us</li>
-              <li>Service</li>
+              <li>Fresh Stocks</li>
+              {/* <li>About Us</li>
+              <li>Service</li> */}
             </ul>
             <p
               className=" py-2 flex items-center gap-3 cursor-pointer hover:bg-slate-100 transition-all duration-100 ease-in-out bg-gray-200 p-2 rounded"
